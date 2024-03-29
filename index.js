@@ -34,6 +34,41 @@ function displayMenuItems(menu) {
 }
 
 
+// Callback function for adding an item to the order
+const addToOrder = (function () {
+    let order = []; // Maintain the state of the order
+
+    return function (itemName) {
+        const orderItemsList = document.getElementById('order-items');
+        const orderTotalElement = document.getElementById('order-total');
+
+        // Create a list item for the order
+        const listItem = document.createElement('li');
+        listItem.textContent = itemName;
+
+        // Append the list item to the order items list
+        orderItemsList.appendChild(listItem);
+
+        // Calculate and update the total price
+        const itemPrice = 5; // Assuming a fixed price for each item
+        order.push(itemPrice);
+        const totalPrice = order.reduce((acc, curr) => acc + curr, 0);
+
+        // Update the text content of the order total element with the new total
+        orderTotalElement.textContent = `Total: ${totalPrice}`;
+    };
+})();
+
+// Function to initialize the menu system
+function initMenuSystem(menu) {
+    displayMenuItems(menu);
+}
+
+// Start the menu system by calling the init function
+initMenuSystem(menu);
+
+
+
 
     // Get the menu container element from the HTML
 
