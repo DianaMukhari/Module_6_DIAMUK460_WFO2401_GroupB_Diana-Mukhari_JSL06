@@ -1,3 +1,4 @@
+
 // Sample menu data (Consider fetching this data from a server in a real-world scenario)
 const menu = {
     Starters: ["Garlic Bread", "Bruschetta"],
@@ -7,6 +8,33 @@ const menu = {
 
 // Function to display menu items by category
 function displayMenuItems(menu) {
+    const menuContainer = document.getElementById('menu');
+
+    for (const category in menu) {
+        // Create an element to represent the category
+        const categoryElement = document.createElement('div');
+        const categoryName = document.createElement('strong'); // Create strong element for bold text
+        categoryName.textContent = category;
+        categoryElement.appendChild(categoryName); // Append category name to strong element
+        menuContainer.appendChild(categoryElement);
+
+        // Create an element to represent a list of items
+        const itemList = document.createElement('ul');
+        menuContainer.appendChild(itemList);
+
+        // Loop through the items in the category and create list items
+        menu[category].forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = item;
+            // Attach a click event listener to the list item to add it to the order
+            listItem.addEventListener('click', () => addToOrder(item));
+            itemList.appendChild(listItem);
+        });
+    }
+}
+
+
+
     // Get the menu container element from the HTML
 
     // Loop through each category and its items in the menu object
@@ -32,10 +60,9 @@ function displayMenuItems(menu) {
             // Append the list item to the list of items
 
             
-}
+
 
 // Callback function for adding an item to the order
-function addToOrder(itemName) {
     // Get the order items list and the order total element from the HTML
 
     // Create a list item for the order
@@ -47,12 +74,11 @@ function addToOrder(itemName) {
     // Calculate and update the total price
 
     // Update the text content of the order total element with the new total
-}
+
 
 // Function to initialize the menu system
-function initMenuSystem(menu) {
     // Call the function to display menu items
-}
+
 
 // Start the menu system by calling the init function
-initMenuSystem(menu);
+
